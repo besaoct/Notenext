@@ -13,7 +13,8 @@ const Home = async () => {
       <div className="items-center justify-center text-white h-20 w-20 flex font-extrabold text-2xl rounded-full bg-neutral-950">
         <PenLine />N
       </div>
-      <p className="font-extrabold text-xl">Notenext</p>
+        <p className="font-extrabold text-xl">Notenext</p>
+  
       <div className="flex flex-col gap-2 mt-2 bg-gray-100 p-4 rounded border border-gray-200 w-full max-w-[20rem]">
         <Button link="/notes-feed" text="Notes Feed" />
         {currentUser ? (
@@ -29,7 +30,8 @@ const Home = async () => {
           </>
         )}
       </div>
-    </div>
+      </div>
+
 </ClientOnly>
   );
 };

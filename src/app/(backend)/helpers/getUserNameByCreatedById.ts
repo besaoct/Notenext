@@ -1,4 +1,4 @@
-import prisma from "../../(frontend)/lib/prismadb";
+import prisma from "../../lib/prismadb";
 
 export async function getUserNameByCreatedById(createdById: string): Promise<string> {
   try {

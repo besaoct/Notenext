@@ -1,9 +1,10 @@
 import  { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials"
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import prisma from "@/app/(frontend)/lib/prismadb";
+import prisma from "@/app/lib/prismadb";
 import bcryptjs from 'bcrypt';
 import GoogleProvider from 'next-auth/providers/google';
+import { sendEmail } from "@/app/(backend)/helpers/mailer";
 
 
 export const Options: NextAuthOptions = {
@@ -25,17 +26,31 @@ export const Options: NextAuthOptions = {
                if (!credentials?.email || !credentials?.password) {
                   throw new Error('Invalid credentials');
                  }
-
+           
             const user = await prisma.user.findUnique({
               where: {
                email: credentials.email
                }
               });
 
-        if (!user || !user?.password) {
+          if (!user || !user?.password) {
           throw new Error('Invalid credentials');
-        }
-
+          }
+        
+              //if the user email is not verified
+          const NotVerifiedUser = await prisma.user.findUnique({
+              where: {
+                 email: credentials.email,
+                 email_verified: false
+               }
+          });
+              
+          if (NotVerifiedUser) {
+             const email= NotVerifiedUser?.email
+             await sendEmail({ email, emailType: "VERIFY", userId: user.id })
+             throw new Error('Notverified');
+          }
+              
         const isCorrectPassword = await bcryptjs.compare(
           credentials.password,
           user.password

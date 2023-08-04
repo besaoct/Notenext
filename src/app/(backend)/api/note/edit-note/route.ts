@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import prisma from "@/app/(frontend)/lib/prismadb";
+import prisma from "@/app/lib/prismadb";
 import getCurrentUser from "@/app/(backend)/helpers/getCurrentUser";
 
 

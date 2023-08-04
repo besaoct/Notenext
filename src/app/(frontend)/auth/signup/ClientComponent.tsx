@@ -10,7 +10,6 @@ import passwordValidator from 'password-validator';
 import toast from 'react-hot-toast'
 import { signIn } from 'next-auth/react';
 import Link from 'next/link';
-import { ArrowLeftCircle } from 'lucide-react';
 import BackButtonWithTitle from '../../components/BackButton';
 
 const Signup = () => {
@@ -34,7 +33,39 @@ const Signup = () => {
             const response = await axios.post('/api/auth/register',user);
             console.log("Signup success", response.data);
             router.push("/auth/login");
-            toast.success("You are registered")
+ toast.custom((tsignup) => (
+  <div
+    className={`${
+      tsignup.visible ? 'animate-enter' : 'animate-leave'
+    } max-w-md w-full bg-neutral-100 shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-neutral-400`}
+  >
+    <div className="flex-1 w-0 p-4">
+      <div className="flex items-start">
+        <div className="ml-3 flex-1">
+          <p className="text-sm font-medium text-gray-950">
+           Hey {user.email}
+          </p>
+          <p className="mt-1 text-sm text-gray-500">
+            Check your mail and verify
+          </p>
+        </div>
+      </div>
+    </div>
+    <div className="flex border-l border-gray-400">
+      <button
+        onClick={() => toast.dismiss(tsignup.id)}
+                    className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium 
+        text-red-600 hover:text-red-500 focus:outline-none hover:bg-neutral-200"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+   ),{
+    duration: 6000,
+  }
+            
+            )
            
     } catch (error:any) {
             toast.error(error.message==="Request failed with status code 400"?"User exists":"Signup failed");

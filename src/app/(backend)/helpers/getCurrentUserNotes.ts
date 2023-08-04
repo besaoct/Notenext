@@ -1,5 +1,5 @@
 
-import prisma from "../../(frontend)/lib/prismadb";
+import prisma from "../../lib/prismadb";
 import getCurrentUser from "./getCurrentUser";
 import { getUserNameByCreatedById } from "./getUserNameByCreatedById";
 
@@ -36,7 +36,7 @@ export async function getCurrentUserNotes(): Promise<Meta[] | undefined> {
       }))
     );
 
-    return safeNotes.sort((b, a) => a.createdAt < b.createdAt ? 1 : -1)
+    return safeNotes.sort((a, b) => a.createdAt < b.createdAt ? 1 : -1)
 
   } catch (error: any) {
     throw new Error(error);

@@ -1,9 +1,9 @@
-import { getServerSession } from "next-auth/next"
+
 import { redirect } from "next/navigation"
-import {Options} from "../api/auth/[...nextauth]/authOptions";
+import getCurrentUser from "./getCurrentUser"
 
 export default async function Loggedin() {
-    const session = await getServerSession(Options)
+    const session = await getCurrentUser()
 
     if (session) {
         redirect('/')

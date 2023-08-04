@@ -1,7 +1,8 @@
 
 import { NextRequest, NextResponse } from "next/server";
-import prisma from "@/app/(frontend)/lib/prismadb";
+import prisma from "@/app/lib/prismadb";
 import bcryptjs from 'bcrypt'
+import { sendEmail } from "../../../helpers/mailer";
 
 export async function POST(request:NextRequest) {
     try {
@@ -32,6 +33,13 @@ export async function POST(request:NextRequest) {
         });
 
         
+      //send verification email
+    
+       await sendEmail({email, emailType: "VERIFY", userId: saveUser.id})
+       
+      //create 
+
+
           return NextResponse.json({
             message: "User created successfully",
             success: true,

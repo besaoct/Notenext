@@ -21,7 +21,7 @@ export default async function RootLayout({
       <head>
         <link rel="shortcut icon" href="/logo.png" type="image/x-icon" />
       </head>
-   <body className={Montse.className}>
+   <body className={`${Montse.className} h-screen w-full`}>
          <Toaster
        position='top-right'
         containerClassName=""
@@ -37,8 +37,11 @@ export default async function RootLayout({
       
               {children}             
          
-         </main>
+        </main>
+        
+            <footer className='p-4 text-center text-white bg-neutral-900 '> {`Made with ♥ - Shafin`}</footer>
       </body>
+
     </html>
   )
 }

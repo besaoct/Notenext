@@ -31,8 +31,45 @@ export default function Login() {
       setLoading(false);
     
       if (callback?.error) {
-        toast.error(callback.error);
-      } else {
+       
+       
+        if (callback.error === "Notverified") {
+            toast.custom((t) => (
+      <div
+    className={`${
+      t.visible ? 'animate-enter' : 'animate-leave'
+    } max-w-md w-full bg-neutral-100 shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-neutral-400`}
+  >
+    <div className="flex-1 w-0 p-4">
+      <div className="flex items-start">
+        <div className="ml-3 flex-1">
+          <p className="text-sm font-medium text-gray-950">
+           Hey {user.email}
+          </p>
+          <p className="mt-1 text-sm text-gray-500">
+            Check your mail and verify
+          </p>
+        </div>
+      </div>
+    </div>
+    <div className="flex border-l border-gray-400">
+      <button
+        onClick={() => toast.dismiss(t.id)}
+                         className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium 
+        text-red-600 hover:text-red-500 focus:outline-none hover:bg-neutral-200"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+   ),{
+    duration: 6000,
+  })
+} else {
+  toast.error(callback.error);
+ }
+      
+} else {
         if (callback?.ok) {
           toast.success('Logged in');
           router.refresh();

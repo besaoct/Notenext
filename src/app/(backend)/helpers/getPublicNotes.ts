@@ -1,5 +1,5 @@
 
-import prisma from "../../(frontend)/lib/prismadb";
+import prisma from "../../lib/prismadb";
 import { getUserNameByCreatedById } from "./getUserNameByCreatedById";
 
 // Helper function to generate a slug from the title
@@ -57,7 +57,7 @@ export async function getPublicNoteById(noteId: string): Promise<NoteType| undef
     }
   
     const author = await getUserNameByCreatedById(note.createdById)
-    console.log(author)
+
   const NotesObj: NoteType = {
       meta: {
       author,

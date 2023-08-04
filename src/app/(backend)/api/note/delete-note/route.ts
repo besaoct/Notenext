@@ -1,6 +1,6 @@
 // pages/api/deleteNote.ts
 import { NextRequest, NextResponse } from "next/server";
-import prisma from "@/app/(frontend)/lib/prismadb";
+import prisma from "@/app/lib/prismadb";
 import getCurrentUser from "@/app/(backend)/helpers/getCurrentUser";
 
 export async function DELETE(request: NextRequest) {

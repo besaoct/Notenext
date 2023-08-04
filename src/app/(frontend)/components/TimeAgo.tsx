@@ -1,6 +1,6 @@
 // components/TimeAgo.tsx
 import React from 'react';
-import formatTimeAgo from '../utils/formatTimeAgo';
+import formatTimeAgo from '../../utils/formatTimeAgo';
 
 interface TimeAgoProps {
   timestamp: Date | string// Pass the timestamp as a string

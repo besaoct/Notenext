@@ -15,6 +15,15 @@ model User {
   password        String? 
   createdAt       DateTime @default(now())
 
+
+//verification and reset pass
+    forgotPasswordToken  String?
+    forgotPasswordTokenExpiry DateTime?
+    verifyToken  String?
+    verifyTokenExpiry DateTime?
+    email_verified Boolean @default(false)
+//end verification and reset pass
+
   emailVerified   DateTime?
   image           String?
 
