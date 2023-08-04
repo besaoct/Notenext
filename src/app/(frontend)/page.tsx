@@ -29,7 +29,8 @@ const Home = async () => {
             <Button link="/auth/signup" text="SignUp" />
           </>
         )}
-      </div>
+        </div>
+      <footer className='p-2 text-center text-neutral-300  '> {`Made with ♥ - Shafin`}</footer>
       </div>
 
 </ClientOnly>

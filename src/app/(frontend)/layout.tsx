@@ -39,7 +39,7 @@ export default async function RootLayout({
          
         </main>
         
-            <footer className='p-4 text-center text-white bg-neutral-900 '> {`Made with ♥ - Shafin`}</footer>
+          
       </body>
 
     </html>
