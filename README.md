@@ -2,7 +2,7 @@
 
 Notenext is a web application that allows users to create and manage their notes in a private or public setting. The project is built using Prisma, MongoDB, Next.js, and TypeScript, providing a secure and efficient platform for users to organize and share their thoughts.
 
-![Notenext Screenshot](https://example.com/screenshot.png) (Replace with an actual screenshot from the app)
+![Notenext Screenshot](https://notenext.vercel.app/logo.png)
 
 ## Live Demo
 
