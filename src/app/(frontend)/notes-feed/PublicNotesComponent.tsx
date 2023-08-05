@@ -7,14 +7,16 @@ import { useRouter } from 'next/navigation';
 import TimeAgo from '../components/TimeAgo';
 import CutText from '../components/CutToText';
 import TruncateText from '../components/TruncateText';
+import Button from '../components/Button';
 
 interface ShowNoteProps {
   notes: Meta[],
-  Emptymessage: string
+  Emptymessage: string,
+  currentUser: any
 }
 
  const PublicNotesComponent : React.FC<ShowNoteProps> = ({
- notes, Emptymessage
+ notes, Emptymessage,currentUser
  }) => {
    const router = useRouter();
   return (
@@ -40,9 +42,30 @@ interface ShowNoteProps {
        notes.map((note: any) => (
          <div key={note.id} className="border border-gray-200 bg-gray-100 p-4 rounded-md m-2">
            <div className='flex items-center gap-2 mb-4 rounded'>
-              <div className='items-center justify-center  text-neutral-100
-          h-8 w-8 min-w-[2.5rem] flex font-extrabold text-sm rounded-sm bg-neutral-600'> {CutText(note.author,1)} </div>
-             <div className='text-base border-b border-b-neutral-600  text-black'>{note.author.split(" ")[0]}</div>
+              <div className={`items-center justify-center  text-neutral-100
+          h-8 w-8 min-w-[2.5rem] flex font-extrabold text-sm rounded-sm
+          ${currentUser?.id === note.createdById ? 'bg-violet-600' : 'bg-neutral-600'} `}>
+               {CutText(note.author, 1)} </div>
+              
+             {currentUser?.id===note.createdById ?
+                 <>
+             <div className='text-base border-b-2 border-b-violet-600  text-black'>
+               
+               <button onClick={()=>router.push('/profile')}>
+                 {note.author.split(" ")[0]}
+                     </button>
+              </div>
+                   
+                 </>
+                 
+                   :
+             <div className='text-base border-b-2 border-b-neutral-600  text-black'>
+              
+                      {note.author.split(" ")[0]}
+              
+              </div>
+             }
+              
               <Globe2 size={16}/>
           </div>
               <p className="text-xs text-gray-500 my-2 flex items-center gap-1">

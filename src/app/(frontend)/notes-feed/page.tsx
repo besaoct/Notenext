@@ -32,7 +32,7 @@ async function page() {
   return (
       <>
           <div className="min-h-screen  bg-gray-100 flex flex-col justify-center items-center p-4">           
-             <PublicNotesComponent notes={notes} Emptymessage={message} />   
+             <PublicNotesComponent notes={notes} currentUser={currentUser} Emptymessage={message} />   
          </div>
       </>
   )

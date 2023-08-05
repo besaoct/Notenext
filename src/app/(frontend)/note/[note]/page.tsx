@@ -1,5 +1,5 @@
 
-import { getCurrentUserNotes, getNoteById } from "@/app/(backend)/helpers/getCurrentUserNotes";
+import {  getNoteById } from "@/app/(backend)/helpers/getCurrentUserNotes";
 import TruncateText from '../../components/TruncateText'
 import NoteFound from "../../components/NoteFound";
 import SingleNote from "../../components/SingleNote";
