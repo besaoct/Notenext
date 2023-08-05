@@ -12,16 +12,6 @@ type Props = {
 }
 
 
-//generateStaticParams
-export async function generateStaticParams() {
-    const notes = await getCurrentUserNotes() //deduped!
-    if (!notes) return []
-    return notes.map((note) => ({
-        noteId: note.id,
-        noteSlug: note.slug,
-        noteTitle: note.title
-    }))
-}
 
 
 
