@@ -11,7 +11,7 @@ const Home = async () => {
     <ClientOnly>
           <div className="min-h-screen gap-4 flex flex-col justify-center items-center p-4">
       <div className="items-center justify-center text-white h-20 w-20 flex font-extrabold text-2xl rounded-full bg-neutral-950">
-        <PenLine />N
+        <PenLine fill='white' />
       </div>
         <p className="font-extrabold text-xl">Notenext</p>
   

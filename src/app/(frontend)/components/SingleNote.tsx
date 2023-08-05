@@ -33,9 +33,19 @@ const SingleNote = ({Title, Content, backLink}:any) => {
                     prose-h2:text-xl
                     prose-h4:text-md
                     prose-h5:text-sm
+
                     prose-p:text-[13px]
                     md:prose-p:text-[16px]
                     sm:prose-p:text-[14px]
+
+                    prose-li:text-[13px]
+                    md:prose-li:text-[16px]
+                    sm:prose-li:text-[14px]
+                    
+                    prose-ol:text-[13px]
+                    md:prose-ol:text-[16px]
+                    sm:prose-ol:text-[14px]
+
                     prose-pre:p-2
                     prose-pre:bg-[#282c34]
                     
