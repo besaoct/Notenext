@@ -32,8 +32,8 @@ var transport = nodemailer.createTransport({
   host: "smtp.elasticemail.com",
   port: 2525,
   auth: {
-    user: "notenext@no-reply.com",
-    pass: "A1E97A48544FB51E20DC03339EE34DFDA9FE"
+    user: process.env.NEXT_PUBLIC_MAILUSER,
+    pass: process.env.NEXT_PUBLIC_MAILPASS
   }
 });
 
